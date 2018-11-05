@@ -5,30 +5,31 @@
  */
 package components;
 
-
 /**
  *
  * @author root
  */
 public class Classe {
-      
+
     private String nom;
     private int capacitat;
-    
-     /*
+
+    /*
      CONSTRUCTOR
      Paràmetres: valors per tots els atributs de la classe.
      Accions:
      - Assignar als atributs els valors passats com a paràmetres.
      */
-    
+    public Classe(String nNom, int cCapacitat) {
+        this.nom = nNom;
+        this.capacitat = cCapacitat;
+    }
+
 
     /*
     Mètodes accessors    
-    */
-   
-
-    /*
+     */
+ /*
     Paràmetres: cap
     Accions:
     - Demanar a l'usuari les dades per consola per crear una nova classe d'avió. 
@@ -38,7 +39,7 @@ public class Classe {
     Retorn: La nova classe.
      */
     public static Classe novaClasse() {
-        
+
     }
 
     /*
@@ -55,7 +56,7 @@ public class Classe {
     }
 
     public void mostrarClasse() {
-        System.out.println("\nLa classe " + nom + " té una capacitat de "+capacitat);
+        System.out.println("\nLa classe " + nom + " té una capacitat de " + capacitat);
     }
-    
+
 }
