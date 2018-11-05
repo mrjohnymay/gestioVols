@@ -22,7 +22,6 @@ public class Classe {
      */
     public Classe(String nNom, int cCapacitat) {
         this.nom = nNom;
-        //
         this.capacitat = cCapacitat;
     }
 
@@ -30,6 +29,8 @@ public class Classe {
     /*
     Mètodes accessors    
      */
+    
+    
  /*
     Paràmetres: cap
     Accions:

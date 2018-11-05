@@ -4,32 +4,28 @@
  */
 package components;
 
-
 /**
  *
  * @author root
  */
 public class RutaNacional {
-    
+
     private String codi;
+    private String pais;
     private String aeroportOri;
     private String aeroportDes;
     private double distancia;
-    
+
     /*
      CONSTRUCTOR
      Paràmetres: valors per tots els atributs de la classe.
      Accions:
      - Assignar als atributs els valors passats com a paràmetres.
      */
-
-
-    /*
+ /*
     Mètodes accessors
      */
-    
-
-    /*
+ /*
     Paràmetres: cap
     Accions:
     - Demanar a l'usuari les dades per consola per crear una nova ruta nacional.
@@ -38,7 +34,7 @@ public class RutaNacional {
     paraula, per exemple, El Prat.
      */
     public static RutaNacional novaRutaNacional() {
-       
+
     }
 
     /*
