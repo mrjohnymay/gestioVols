@@ -5,6 +5,8 @@
  */
 package components;
 
+import java.util.Scanner;
+
 /**
  *
  * @author root
@@ -25,13 +27,20 @@ public class Classe {
         this.capacitat = cCapacitat;
     }
 
+    private static Scanner dades = new Scanner(System.in);
 
     /*
     Mètodes accessors    
      */
-    
-    
- /*
+    public String getNom() {
+        return this.nom;
+    }
+
+    public int getCapacitat() {
+        return this.capacitat;
+    }
+
+    /*
     Paràmetres: cap
     Accions:
     - Demanar a l'usuari les dades per consola per crear una nova classe d'avió. 
@@ -41,6 +50,15 @@ public class Classe {
     Retorn: La nova classe.
      */
     public static Classe novaClasse() {
+        String nouNom;
+        int novaCapacitat;
+        System.out.print("Inserta el nom de la nova classe: ");
+        nouNom = dades.nextLine();
+        System.out.print("Inserta la capacitat de la nova classe: ");
+        novaCapacitat = dades.nextInt();
+        dades.nextLine();
+
+        return Classe(nouNom, novaCapacitat);
 
     }
 
