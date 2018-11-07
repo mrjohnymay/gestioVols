@@ -40,6 +40,14 @@ public class Classe {
         return this.capacitat;
     }
 
+    public void setNom(String nomParametre) {
+        this.nom = nomParametre;
+    }
+
+    public void setCapacitat(int capacitatParametre) {
+        this.capacitat = capacitatParametre;
+    }
+
     /*
     Paràmetres: cap
     Accions:

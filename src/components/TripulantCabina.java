@@ -111,7 +111,7 @@ public class TripulantCabina {
      en el cas del comandant sempre 4 i en el cas de l'enginyer de vol sempre 1.
      Retorn: número de barres
      */
-    public int assignarBarres(String pRang) {
+    public void assignarBarres(String pRang) {
 
     }
 

@@ -22,17 +22,18 @@ public class RutaNacional {
      Accions:
      - Assignar als atributs els valors passats com a paràmetres.
      */
- /*
+    
+    /*
     Mètodes accessors
-     */
- /*
+    */
+    /*
     Paràmetres: cap
     Accions:
     - Demanar a l'usuari les dades per consola per crear una nova ruta nacional.
     Les dades a demanar són les que necessita el constructor.
     - Heu de tenir en compte que els aeroports no tene per què estar formats per una única 
     paraula, per exemple, El Prat.
-     */
+    */
     public static RutaNacional novaRutaNacional() {
 
     }
