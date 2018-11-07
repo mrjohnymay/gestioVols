@@ -66,7 +66,7 @@ public class Classe {
         novaCapacitat = dades.nextInt();
         dades.nextLine();
 
-        return Classe(nouNom, novaCapacitat);
+        return new Classe(nouNom, novaCapacitat);
 
     }
 
@@ -80,11 +80,27 @@ public class Classe {
      Retorn: cap
      */
     public void modificarClasse() {
+        System.out.println("Parametres actuals de la Classe:\n"
+                + "- Nom: " + this.nom + "\n- Capacitat: " + this.capacitat);
+        System.out.print("Introdueix el nou nom de la classe: ");
+        this.nom = dades.nextLine();
+        System.out.print("Introdueix la nova capacitat de la classe: ");
+        this.capacitat = dades.nextInt();
 
+        dades.nextLine();
     }
 
     public void mostrarClasse() {
         System.out.println("\nLa classe " + nom + " té una capacitat de " + capacitat);
     }
+    
+    /*public static void main(String[] args) {
+        Classe c = new Classe("Prueba",400);
+        c.mostrarClasse();
+        c.modificarClasse();
+        c.mostrarClasse();
+        Classe a = Classe.novaClasse();
+        a.mostrarClasse();
+    }*/
 
 }
