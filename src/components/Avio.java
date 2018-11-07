@@ -4,13 +4,14 @@
  */
 package components;
 
-
-
 /**
  *
  * @author root
  */
+import java.util.Scanner;
 public class Avio {
+    
+    private static Scanner dades = new Scanner (System.in);
 
     private String codi;
     private String fabricant;
@@ -27,13 +28,60 @@ public class Avio {
      - Inicialitzar el vector classes com a buit i una longitud de 4.
      - Inicialitzar l'atribut possicioClasses a 0.
      */
-  
+    
+    public Avio (String codi, String fabricant, String model, int capacitat){
+        this.codi = codi;
+        this.fabricant = fabricant;
+        this.model = model;
+        this.capacitat = capacitat;
+        this.classes = new Classe[4];
+        this.posicioClasses = 0;
+    }
 
     /*
     Mètodes accessors
      */
-
-
+    
+    public String getCodi(){
+        return this.codi;
+    }
+    
+    public String getFabricant(){
+        return this.fabricant;
+    }
+    
+    public String getModel(){
+        return this.model;
+    }
+    
+    public int getCapacitat(){
+        return this.capacitat;
+    }
+    
+    public Classe[] getClasses(){
+        return this.classes;
+    }
+    
+    public int getPosicioClasses(){
+        return this.posicioClasses;
+    }
+    
+    public void setCodi(String codi){
+        this.codi = codi;
+    }
+    
+    public void setFabricant(String fabricant){
+        this.fabricant = fabricant;
+    }
+    
+    public void setModel(String model){
+        this.model = model;
+    }
+    
+    public void setCapacitat(int capacitat){
+        this.capacitat = capacitat;
+    }
+    
     /*
     Paràmetres: cap
     Accions:
@@ -44,6 +92,17 @@ public class Avio {
     Retorn: El nou avió.
      */
     public static Avio nouAvio() {
+        
+        System.out.println("Introdueix el codi del avió: ");
+        String codi = dades.nextLine();
+        System.out.println("Introdueix el fabricant del avió: ");
+        String fabricant = dades.nextLine();
+        System.out.println("Introdueix el model del avió: ");
+        String model = dades.nextLine();
+        System.out.println("Introdueix la capacitat del avió: ");
+        int capacitat = dades.nextInt();
+        
+        return new Avio(codi,fabricant,model,capacitat);
         
     }
 
@@ -57,7 +116,26 @@ public class Avio {
      Retorn: cap
      */
     public void modificarAvio() {
-
+        String codi = getCodi();
+        String fabricant = getFabricant();
+        String model = getModel();
+        int capacitat = getCapacitat();
+        
+        System.out.println("El codi de l'avió és: " + codi + ". Introdueix el nou codi.");
+        codi = dades.nextLine();
+        System.out.println("El fabricant de l'avió és: " + fabricant + ". Introdueix el nou fabricant.");
+        fabricant = dades.nextLine();
+        System.out.println("El model de l'avió és: " + model + ". Introdueix el nou model.");
+        model = dades.nextLine();
+        System.out.println("La capacitat de l'avió és: " + capacitat + ". Introdueix la nova capacitat.");
+        capacitat = dades.nextInt();
+        dades.nextLine();
+        
+        setCodi(codi);
+        setFabricant(fabricant);
+        setModel(model);
+        setCapacitat(capacitat);
+        
     }
 
     public void mostrarAvio() {
@@ -82,7 +160,7 @@ public class Avio {
      Retorn: cap
      */
     public void afegirClasse() {
-
+        
     }
 
     public int seleccionarClasse(String nom) {
@@ -99,5 +177,4 @@ public class Avio {
 
         return pos;
     }
-
 }
