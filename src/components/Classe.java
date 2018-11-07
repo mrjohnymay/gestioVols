@@ -93,7 +93,7 @@ public class Classe {
     public void mostrarClasse() {
         System.out.println("\nLa classe " + nom + " té una capacitat de " + capacitat);
     }
-    
+
     /*public static void main(String[] args) {
         Classe c = new Classe("Prueba",400);
         c.mostrarClasse();
@@ -102,5 +102,4 @@ public class Classe {
         Classe a = Classe.novaClasse();
         a.mostrarClasse();
     }*/
-
 }
