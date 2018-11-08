@@ -159,6 +159,7 @@ public class Avio {
      li mostrarem a l'usuari el missatge "\nLa classe no s'ha pogut afegir".
      Retorn: cap
      */
+    
     public void afegirClasse() {
         
     }
