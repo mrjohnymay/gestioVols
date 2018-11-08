@@ -33,6 +33,13 @@ public class TripulantCabina {
      - Inicialitzar l'atribut dataAlta amb l'hora actual del sistema.
      - Inicialitzar l'atribut barres mitjançant el mètode pertinent d'aquesta classe.
      */
+    
+    public TripulantCabina(String nouPassaport, String nouNom, int novaEdat, LocalTime novesHoresVol, String nouRang ) {
+        this.passaport = nouPassaport;
+        this.nom = nouNom;
+        this.edat = novaEdat;
+        //todo
+    }
 
 
     /*

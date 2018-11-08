@@ -12,13 +12,14 @@ import java.util.Scanner;
  */
 public class RutaNacional {
 
+    private static Scanner dades = new Scanner(System.in);
+
     private String codi;
     private String pais;
     private String aeroportOri;
     private String aeroportDes;
     private double distancia;
 
-    private static final Scanner dades = new Scanner(System.in);
 
     /*
      CONSTRUCTOR
@@ -119,15 +120,15 @@ public class RutaNacional {
      */
     public void modificarRutaNacional() {
 
-        System.out.print("El codi de la ruta nacional és: " + this.codi + ". Introdueix el nou codi: ");
+        System.out.print("El codi de la ruta nacional és: " + this.codi + ".\nIntrodueix el nou codi: ");
         setCodi(dades.nextLine());
-        System.out.print("L'aeroport d'origen és: " + this.aeroportOri + ". Introdueix el nou aeroport: ");
+        System.out.print("L'aeroport d'origen és: " + this.aeroportOri + ".\nIntrodueix el nou aeroport: ");
         setAeroportOri(dades.nextLine());
-        System.out.print("L'aeroport de destí és: " + this.aeroportDes + ". Introdueix el nou aeroport: ");
+        System.out.print("L'aeroport de destí és: " + this.aeroportDes + ".\nIntrodueix el nou aeroport: ");
         setAeroportDes(dades.nextLine());
-        System.out.print("El pais d'origen és: " + this.pais + ". Introdueix el nou pais: ");
+        System.out.print("El pais d'origen és: " + this.pais + ".\nIntrodueix el nou pais: ");
         setPais(dades.nextLine());
-        System.out.print("La distància és: " + this.pais + ". Introdueix la nova distància: ");
+        System.out.print("La distància és: " + this.pais + ".\nIntrodueix la nova distància: ");
         setDistancia(dades.nextDouble());
         dades.nextLine();
 
