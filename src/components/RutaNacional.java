@@ -18,7 +18,7 @@ public class RutaNacional {
     private String aeroportDes;
     private double distancia;
 
-    private static Scanner dades = new Scanner(System.in);
+    private static final Scanner dades = new Scanner(System.in);
 
     /*
      CONSTRUCTOR
@@ -119,6 +119,18 @@ public class RutaNacional {
      */
     public void modificarRutaNacional() {
 
+        System.out.print("El codi de la ruta nacional és: " + this.codi + ". Introdueix el nou codi: ");
+        setCodi(dades.nextLine());
+        System.out.print("L'aeroport d'origen és: " + this.aeroportOri + ". Introdueix el nou aeroport: ");
+        setAeroportOri(dades.nextLine());
+        System.out.print("L'aeroport de destí és: " + this.aeroportDes + ". Introdueix el nou aeroport: ");
+        setAeroportDes(dades.nextLine());
+        System.out.print("El pais d'origen és: " + this.pais + ". Introdueix el nou pais: ");
+        setPais(dades.nextLine());
+        System.out.print("La distància és: " + this.pais + ". Introdueix la nova distància: ");
+        setDistancia(dades.nextDouble());
+        dades.nextLine();
+
     }
 
     public void mostrarRutaNacional() {
@@ -127,4 +139,16 @@ public class RutaNacional {
         System.out.println("\nAeroport de destí: " + aeroportDes);
         System.out.println("\nDistància: " + distancia);
     }
+    /*
+    public static void main(String[] args) {
+           
+        RutaNacional R = new RutaNacional("2","3","4","5",5);
+        
+        R.mostrarRutaNacional();
+        R.modificarRutaNacional();
+        R.mostrarRutaNacional();
+        
+        RutaNacional a = RutaNacional.novaRutaNacional();
+        a.mostrarRutaNacional();
+    }*/
 }
