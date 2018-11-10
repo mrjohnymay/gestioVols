@@ -4,6 +4,7 @@
  */
 package components;
 
+import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
  */
 public class TCP {
 
+    private static Scanner dades = new Scanner(System.in);
     private String passaport;
     private String nom;
     private int edat;
@@ -30,10 +32,57 @@ public class TCP {
      - Inicialitzar l'atribut rang a null, ja que quan es crea un TCP, mai té rang.
      */
     
+    public TCP(String passaport, String nom, int edat, LocalTime horesVol){
+        this.passaport = passaport;
+        this.nom = nom;
+        this.edat = edat;
+        this.dataAlta = new Date();
+        this.horesVol = horesVol;
+        this.rang = null;
+    }
+    
 
     /*
     Mètodes accessors
      */
+    
+    public String getPassaport(){
+        return this.passaport;
+    }
+    public String getNom(){
+        return this.nom;
+    }
+    public int getEdat(){
+        return this.edat;
+    }
+    public Date getDataAlta(){
+        return this.dataAlta;
+    }
+    public LocalTime getHoresVol(){
+        return this.horesVol;
+    }
+    public String getRang(){
+        return this.rang;
+    }
+    
+    public void setPassaport(String passaport){
+        this.passaport = passaport;
+    }
+    public void setNom(String nom){
+        this.nom = nom;
+    }
+    public void setEdat(int edat){
+        this.edat = edat;
+    }
+    public void setDataAlta(Date dataAlta){
+        this.dataAlta = dataAlta;
+    }
+    public void setHoresVol(LocalTime horesVol){
+        this.horesVol = horesVol;
+    }
+    public void setRang(String rang){
+        this.rang = rang;
+    }
     
 
     /*
@@ -48,7 +97,16 @@ public class TCP {
     cas es considerarà que els segons i nanosegons, sempre són  0.
      */
     public static TCP nouTCP() {
-       
+        System.out.println("Introdueix el passaport: ");
+        String passaport = dades.nextLine();
+        System.out.println("Introdueix el nom: ");
+        String nom = dades.nextLine();
+        System.out.println("Introdueix la edat: ");
+        int edat = dades.nextInt();
+        System.out.println("Introdueix les hores de vol");
+        String horesVol = dades.nextLine();
+        
+        return new TCP(passaport,nom,edat,horesVol);
     }
 
     /*
@@ -64,7 +122,24 @@ public class TCP {
      Retorn: cap
      */
     public void modificarTCP() {
-
+        String passaport = getPassaport();
+        String nom = getNom();
+        int edat = getEdat();
+        LocalTime horesVol = getHoresVol();
+        
+        System.out.println("Aquest és el passaport: " + passaport + ". Introduexi el passaport: ");
+        passaport = dades.nextLine();
+        System.out.println("Aquest és el nom: " + nom + ". Introdueix el nom: ");
+        nom = dades.nextLine();
+        System.out.println("Aquesta és la edat: " + ". Introdueix la edat: ");
+        edat = dades.nextInt();
+        System.out.println("Aquestes son les hores de vol: " + horesVol + ". Introdueix les hores de vol: ");
+        horesVol = dades.nextLine();
+        
+        setPassaport(passaport);
+        setNom(nom);
+        setEdat(edat);
+        setHoresVol(horesVol);
     }
 
     public void mostrarTCP() {
