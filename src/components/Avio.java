@@ -116,26 +116,20 @@ public class Avio {
      Retorn: cap
      */
     public void modificarAvio() {
-        String codi = getCodi();
-        String fabricant = getFabricant();
-        String model = getModel();
-        int capacitat = getCapacitat();
-        
         System.out.println("El codi de l'avió és: " + codi + ". Introdueix el nou codi.");
-        codi = dades.nextLine();
+        this.codi = dades.nextLine();
         System.out.println("El fabricant de l'avió és: " + fabricant + ". Introdueix el nou fabricant.");
-        fabricant = dades.nextLine();
+        this.fabricant = dades.nextLine();
         System.out.println("El model de l'avió és: " + model + ". Introdueix el nou model.");
-        model = dades.nextLine();
+        this.model = dades.nextLine();
         System.out.println("La capacitat de l'avió és: " + capacitat + ". Introdueix la nova capacitat.");
-        capacitat = dades.nextInt();
+        this.capacitat = dades.nextInt();
         dades.nextLine();
         
         setCodi(codi);
         setFabricant(fabricant);
         setModel(model);
         setCapacitat(capacitat);
-        
     }
 
     public void mostrarAvio() {

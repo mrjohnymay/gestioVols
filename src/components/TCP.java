@@ -33,10 +33,12 @@ public class TCP {
      */
     
     public TCP(String passaport, String nom, int edat, LocalTime horesVol){
+        Date data = new Date();
+        
         this.passaport = passaport;
         this.nom = nom;
         this.edat = edat;
-        this.dataAlta = new Date();
+        this.dataAlta =  data;
         this.horesVol = horesVol;
         this.rang = null;
     }
@@ -83,7 +85,6 @@ public class TCP {
     public void setRang(String rang){
         this.rang = rang;
     }
-    
 
     /*
     Paràmetres: cap
@@ -104,7 +105,10 @@ public class TCP {
         System.out.println("Introdueix la edat: ");
         int edat = dades.nextInt();
         System.out.println("Introdueix les hores de vol");
-        String horesVol = dades.nextLine();
+        String hores = dades.nextLine();
+        int hora = Integer.parseInt(hores.substring(0,2));
+        int minuto = Integer.parseInt(hores.substring(2));
+        LocalTime horesVol = LocalTime.of(hora,minuto);
         
         return new TCP(passaport,nom,edat,horesVol);
     }
@@ -122,19 +126,19 @@ public class TCP {
      Retorn: cap
      */
     public void modificarTCP() {
-        String passaport = getPassaport();
-        String nom = getNom();
-        int edat = getEdat();
-        LocalTime horesVol = getHoresVol();
+        String hores;
         
         System.out.println("Aquest és el passaport: " + passaport + ". Introduexi el passaport: ");
-        passaport = dades.nextLine();
+        this.passaport = dades.nextLine();
         System.out.println("Aquest és el nom: " + nom + ". Introdueix el nom: ");
-        nom = dades.nextLine();
+        this.nom = dades.nextLine();
         System.out.println("Aquesta és la edat: " + ". Introdueix la edat: ");
-        edat = dades.nextInt();
-        System.out.println("Aquestes son les hores de vol: " + horesVol + ". Introdueix les hores de vol: ");
-        horesVol = dades.nextLine();
+        this.edat = dades.nextInt();
+        System.out.println("Aquestes son les hores de vol: " + horesVol + ". Introdueix les hores de vol: (Hores)");
+        hores = dades.nextLine();
+        int hora = Integer.parseInt(hores.substring(0,2));
+        int minuto = Integer.parseInt(hores.substring(2));
+        this.horesVol = LocalTime.of(hora,minuto);
         
         setPassaport(passaport);
         setNom(nom);

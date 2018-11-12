@@ -94,12 +94,12 @@ public class Classe {
         System.out.println("\nLa classe " + nom + " té una capacitat de " + capacitat);
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Classe c = new Classe("Prueba",400);
         c.mostrarClasse();
         c.modificarClasse();
         c.mostrarClasse();
         Classe a = Classe.novaClasse();
         a.mostrarClasse();
-    }*/
+    }
 }
