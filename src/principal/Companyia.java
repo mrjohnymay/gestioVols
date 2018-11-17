@@ -257,7 +257,7 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirAvio() {
-
+        
     }
 
     public int seleccionarAvio() {
@@ -564,5 +564,5 @@ public class Companyia {
     public void afegirRutaVol(int tipus) {
 
     }
-
+    
 }

@@ -270,13 +270,13 @@ public class Vol {
         int mesS = Integer.parseInt(fechaSalida.substring(3, 5));
         int anyS = Integer.parseInt(fechaSalida.substring(6));
 
-        Date dataSortida = new Date(diaS, mesS, anyS);
+        Date dataSortida = new Date(anyS, mesS, diaS);
 
         int diaA = Integer.parseInt(fechaLlegada.substring(0, 2));
         int mesA = Integer.parseInt(fechaLlegada.substring(3, 5));
         int anyA = Integer.parseInt(fechaLlegada.substring(6));
 
-        Date dataArribada = new Date(diaA, mesA, anyA);
+        Date dataArribada = new Date(anyA, mesA, diaA);
 
         int horaS = Integer.parseInt(horaSalida.substring(0, 2));
         int minutoS = Integer.parseInt(horaSalida.substring(3));
@@ -309,8 +309,22 @@ public class Vol {
     private String calcularDurada() {
         Date dataSortida = getDataSortida();
         Date dataArribada = getDataArribada();
+        LocalTime horaSortida = getHoraSortida();
+        LocalTime horaArribada = getHoraArribada();
         
-        
+        //fem 2 variables date amb les dates de sortida i arribada on agrupem totes les dates que tenim de cadascuna, per despres agafar la diferencia en ms
+        Date dataSortidaSencera = new Date(dataSortida.getYear(), dataSortida.getMonth(), dataSortida.getDate(), horaSortida.getHour(), horaSortida.getMinute());
+        Date dataArribadaSencera = new Date(dataArribada.getYear(), dataArribada.getMonth(), dataArribada.getDate(), horaArribada.getHour(), horaArribada.getMinute());
+
+        //agafem la diferencia en milisegons entre la data d'arribada i sortida
+        long diferencia = dataArribadaSencera.getTime() - dataSortidaSencera.getTime();
+        //1000ms ->1s * 60s-> 1min % 60
+        //%60 perque 1minut te 60 segons i no 100
+        long minuts = diferencia / (1000 * 60 ) % 60;
+        //1000ms ->1s * 60s-> 1min * 60min-> 1h  
+        long hores = diferencia / (1000 * 60 * 60);
+
+        return hores + " h - " + minuts + " m";
     }
 
     /*
