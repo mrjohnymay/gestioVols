@@ -20,7 +20,7 @@ import java.util.Scanner;
  * @author root
  */
 public class Companyia {
-    
+
     private static Scanner DADES = new Scanner(System.in);
 
     private int codi;
@@ -210,6 +210,11 @@ public class Companyia {
      Retorn: La nova companyia.
      */
     public static Companyia novaCompanyia() {
+        String nouNom;
+        System.out.print("Inserta el nom de la nova companyia: ");
+        nouNom = DADES.nextLine();
+
+        return new Companyia(nouNom);
 
     }
 
@@ -225,7 +230,14 @@ public class Companyia {
      Retorn: cap
      */
     public void modificarCompanyia() {
+        String nouNom;
+        System.out.println("Dades actuals de la companyia...\n");
+        mostrarCompanyia();
 
+        System.out.print("Introdueix el nou nom de la companyia: ");
+        nouNom = DADES.nextLine();
+        this.setNom(nouNom);
+        
     }
 
     public void mostrarCompanyia() {
