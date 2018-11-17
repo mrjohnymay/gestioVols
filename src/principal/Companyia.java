@@ -13,12 +13,15 @@ import components.RutaTransoceanica;
 import components.TCP;
 import components.TripulantCabina;
 import java.text.ParseException;
+import java.util.Scanner;
 
 /**
  *
  * @author root
  */
 public class Companyia {
+    
+    private static Scanner DADES = new Scanner(System.in);
 
     private int codi;
     private static int properCodi = 1; //El proper codi a assignar
@@ -59,13 +62,144 @@ public class Companyia {
        posicioTripulantsCabina, posicioTcps i posicioVols, s'han d'inicialitzar a 0, què serà la primera posició
        buida dels vectors inicilitzats.
      */
-    
-    
+    public Companyia(String nouNom) {
+        this.nom = nouNom;
+        this.codi = properCodi;
+        properCodi++;
+        this.avions = new Avio[200];
+        this.rutesNacionals = new RutaNacional[100];
+        this.rutesInternacionals = new RutaInternacional[200];
+        this.rutesIntercontinentals = new RutaIntercontinental[100];
+        this.rutesTransoceaniques = new RutaTransoceanica[45];
+        this.tripulantsCabina = new TripulantCabina[600];
+        this.tcps = new TCP[1000];
+        this.vols = new Vol[700];
+
+        this.posicioRutesNacionals = 0;
+        this.posicioRutesInternacionals = 0;
+        this.posicioRutesIntercontinentals = 0;
+        this.posicioRutesTransoceaniques = 0;
+        this.posicioTripulantsCabina = 0;
+        this.posicioTcps = 0;
+        this.posicioVols = 0;
+
+    }
+
     /*
      Mètodes accessors    
      */
+    public int getCodi() {
+        return this.codi;
+    }
 
-    
+    public int getProperCodi() {
+        return properCodi;
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public Avio[] getAvions() {
+        return this.avions;
+    }
+
+    public int getPosicioAvions() {
+        return this.posicioAvions;
+    }
+
+    public RutaNacional[] getRutesNacionals() {
+        return this.rutesNacionals;
+    }
+
+    public int getPosicioRutesNacionals() {
+        return this.posicioRutesNacionals;
+    }
+
+    public RutaInternacional[] getRutesInternacionals() {
+        return this.rutesInternacionals;
+    }
+
+    public int getPosicioRutesInternacionals() {
+        return this.posicioRutesInternacionals;
+    }
+
+    public RutaIntercontinental[] getRutesIntercontinentals() {
+        return this.rutesIntercontinentals;
+    }
+
+    public int getPosicioRutesIntercontinentals() {
+        return this.posicioRutesIntercontinentals;
+    }
+
+    public RutaTransoceanica[] getRutesTransoceaniques() {
+        return this.rutesTransoceaniques;
+    }
+
+    public int getPosicioRutesTransoceaniques() {
+        return this.posicioRutesTransoceaniques;
+    }
+
+    public TripulantCabina[] getTripulantsCabina() {
+        return this.tripulantsCabina;
+    }
+
+    public int getPosicioTripulantsCabina() {
+        return this.posicioTripulantsCabina;
+    }
+
+    public TCP[] getTcps() {
+        return this.tcps;
+    }
+
+    public int getPosicioTcps() {
+        return this.posicioTcps;
+    }
+
+    public Vol[] getVols() {
+        return this.vols;
+    }
+
+    public void setCodi(int nouCodi) {
+        this.codi = nouCodi;
+    }
+
+    public void setNom(String nouNom) {
+        this.nom = nouNom;
+    }
+
+    public void setAvions(Avio[] avions) {
+        this.avions = avions;
+    }
+
+    public void setRutesNacionals(RutaNacional[] rutesNacionals) {
+        this.rutesNacionals = rutesNacionals;
+    }
+
+    public void setRutesInternacionals(RutaInternacional[] rutesInternacionals) {
+        this.rutesInternacionals = rutesInternacionals;
+    }
+
+    public void setRutesIntercontinentals(RutaIntercontinental[] rutesIntercontinentals) {
+        this.rutesIntercontinentals = rutesIntercontinentals;
+    }
+
+    public void setRutesTransoceaniques(RutaTransoceanica[] rutesTransoceaniques) {
+        this.rutesTransoceaniques = rutesTransoceaniques;
+    }
+
+    public void setTripulantsCabina(TripulantCabina[] tripulantsCabina) {
+        this.tripulantsCabina = tripulantsCabina;
+    }
+
+    public void setTcps(TCP[] tcps) {
+        this.tcps = tcps;
+    }
+
+    public void setVols(Vol[] vols) {
+        this.vols = vols;
+    }
+
     /*
      Paràmetres: cap
      Accions:
@@ -381,7 +515,7 @@ public class Companyia {
     public void afegirTripulantCabinaVol() {
 
     }
-    
+
     /*
      Paràmetres: cap
      Accions:
@@ -395,7 +529,7 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirTCPVol() {
-  
+
     }
 
     /*
@@ -416,7 +550,7 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaVol(int tipus) {
-    
+
     }
 
 }
