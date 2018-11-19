@@ -138,7 +138,7 @@ public class Vol {
     }
 
     public void setAvio(Avio avio) {
-        this.avio = avio;
+        avio = avio;
     }
 
     public void setTripulacioCabina(TripulantCabina[] tripulacioCabina) {
@@ -196,9 +196,6 @@ public class Vol {
     public static Vol nouVol() throws ParseException {
         System.out.println("Introdueix el codi: ");
         String codi = dades.nextLine();
-        System.out.println("Introdueix el tipus de ruta: ");
-        int ruta = dades.nextInt();
-        dades.nextLine();
         System.out.println("Introdueix la data de sortida dd-mm-aaaa: ");
         String fechaSalida = dades.nextLine();
         System.out.println("Introdueix la data d'arribada dd-mm-aaaa: ");
@@ -230,7 +227,7 @@ public class Vol {
 
         LocalTime horaArribada = LocalTime.of(horaA, minutoA);
 
-        return new Vol(codi, ruta, dataSortida, dataArribada, horaSortida, horaArribada);
+        return new Vol(codi, dataSortida, dataArribada, horaSortida, horaArribada);
     }
 
     /*
