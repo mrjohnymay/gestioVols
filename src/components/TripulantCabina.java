@@ -268,17 +268,17 @@ public class TripulantCabina {
     public void assignarBarres(String pRang) {
         switch (pRang) {
             case "Copilot":
-                if (horesVol.getHour() < 1500) {
-                    barres = 2;
+                if (this.horesVol.getHour() < 1500) {
+                    this.barres = 2;
                 } else {
-                    barres = 3;
+                    this.barres = 3;
                 }
                 break;
             case "Comandant":
-                barres = 4;
+                this.barres = 4;
                 break;
             case "Enginyer":
-                barres = 1;
+                this.barres = 1;
         }
     }
 

@@ -237,7 +237,7 @@ public class Companyia {
         System.out.print("Introdueix el nou nom de la companyia: ");
         nouNom = DADES.nextLine();
         this.setNom(nouNom);
-        
+
     }
 
     public void mostrarCompanyia() {
@@ -257,7 +257,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirAvio() {
-        
+        avions[posicioAvions] = Avio.nouAvio();
+        posicioAvions++;
     }
 
     public int seleccionarAvio() {
@@ -288,7 +289,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaNacional() {
-
+        rutesNacionals[posicioRutesNacionals] = RutaNacional.novaRutaNacional();
+        posicioRutesNacionals++;
     }
 
     public int seleccionarRutaNacional() {
@@ -319,7 +321,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaInternacional() {
-
+        rutesInternacionals[posicioRutesInternacionals] = RutaInternacional.novaRutaInternacional();
+        posicioRutesInternacionals++;
     }
 
     public int seleccionarRutaInternacional() {
@@ -350,7 +353,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaIntercontinental() {
-
+        rutesIntercontinentals[posicioRutesIntercontinentals] = RutaIntercontinental.novaRutaInternacional();
+        posicioRutesIntercontinentals++;
     }
 
     public int seleccionarRutaIntercontinental() {
@@ -381,7 +385,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaTransoceanica() {
-
+        rutesTransoceaniques[posicioRutesTransoceaniques] = RutaTransoceanica.novaRutaTransoceanica();
+        posicioRutesTransoceaniques++;
     }
 
     public int seleccionarRutaTransoceanica() {
@@ -413,7 +418,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirTripulantCabina() {
-
+        tripulantsCabina[posicioTripulantsCabina] = TripulantCabina.nouTripulantCabina();
+        posicioTripulantsCabina++;
     }
 
     public int seleccionarTripulantCabina() {
@@ -444,7 +450,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirTCP() {
-
+        tcps[posicioTcps] = TCP.nouTCP();
+        posicioTcps++;
     }
 
     public int seleccionarTCP() {
@@ -475,7 +482,8 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirVol() throws ParseException {
-
+        vols[posicioVols] = Vol.nouVol();
+        posicioVols++;
     }
 
     public int seleccionarVol() {
@@ -564,5 +572,5 @@ public class Companyia {
     public void afegirRutaVol(int tipus) {
 
     }
-    
+
 }
