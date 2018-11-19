@@ -579,18 +579,42 @@ public class Aplicacio {
 
             switch (opcio) {
                 case 1:
+                    companyiaActual.afegirVol();
                     break;
                 case 2:
+                    int pos = companyiaActual.seleccionarVol();
+                    companyiaActual.getVols()[pos].modificarVol();
                     break;
                 case 3:
+                    companyiaActual.afegirAvioVol();
                     break;
                 case 4:
+                    int tipus;
+                    do {
+
+                        System.out.println("Inserta el Tipus de ruta: ");
+                        System.out.println("1 - Ruta Nacional\n"
+                                + "2 - Ruta Internacional\n"
+                                + "3 - Ruta Intercontinental\n"
+                                + "4 - Ruta Transoceánica \n");
+                        tipus = dades.nextInt();
+                        dades.nextLine();
+                        if (tipus > 4 || tipus < 1) {
+                            System.out.println("\nAquest tipus de ruta no existeix\n");
+                        }
+                    } while (tipus > 4 || tipus < 1);
+                    companyiaActual.afegirRutaVol(tipus);
                     break;
                 case 5:
+                    companyiaActual.afegirTripulantCabinaVol();
                     break;
                 case 6:
+                    companyiaActual.afegirTCPVol();
                     break;
                 case 7:
+                    for (Vol vol : companyiaActual.getVols()) {
+                        vol.mostrarVol();
+                    }
                     break;
                 default:
                     System.out.println("Introdueix una opció correcta");
