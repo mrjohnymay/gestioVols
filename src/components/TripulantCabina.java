@@ -281,5 +281,4 @@ public class TripulantCabina {
                 barres = 1;
         }
     }
-
 }
