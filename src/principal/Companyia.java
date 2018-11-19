@@ -26,11 +26,11 @@ public class Companyia {
     private int codi;
     private static int properCodi = 1; //El proper codi a assignar
     private String nom;
-    private Avio[] avions;
+    Avio[] avions;
     private int posicioAvions; //Possició actual buida del vector avions
-    private RutaNacional[] rutesNacionals;
+    RutaNacional[] rutesNacionals;
     private int posicioRutesNacionals; //Possició actual buida del vector rutesNacionals
-    private RutaInternacional[] rutesInternacionals;
+    RutaInternacional[] rutesInternacionals;
     private int posicioRutesInternacionals; //Possició actual buida del vector rutesInternacionals
     private RutaIntercontinental[] rutesIntercontinentals;
     private int posicioRutesIntercontinentals; //Possició actual buida del vector rutesIntercontinentals

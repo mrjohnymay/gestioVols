@@ -4,6 +4,8 @@
  */
 package principal;
 
+import components.Avio;
+import components.RutaNacional;
 import java.text.ParseException;
 
 /**
@@ -194,10 +196,16 @@ public class Aplicacio {
 
             switch (opcio) {
                 case 1:
+                    companyies[posicioCompanyies].afegirAvio();
                     break;
                 case 2:
+                    int pos = companyies[posicioCompanyies].seleccionarAvio();
+                    companyies[posicioCompanyies].avions[pos].modificarAvio();
                     break;
                 case 3:
+                    for (Avio avion : companyies[posicioCompanyies].avions) {
+                        avion.mostrarAvio();
+                    }
                     break;
                 default:
                     System.out.println("Introdueix una opció correcta");
@@ -240,10 +248,16 @@ public class Aplicacio {
 
             switch (opcio) {
                 case 1:
+                    companyies[posicioCompanyies].afegirRutaNacional();
                     break;
                 case 2:
+                    int pos = companyies[posicioCompanyies].seleccionarRutaNacional();
+                    companyies[posicioCompanyies].rutesNacionals[pos].modificarRutaNacional();
                     break;
                 case 3:
+                    for (RutaNacional rutesNacionals : companyies[posicioCompanyies].rutesNacionals) {
+                        rutesNacionals.mostrarRutaNacional();
+                    }
                     break;
                 default:
                     System.out.println("Introdueix una opció correcta");
@@ -286,10 +300,14 @@ public class Aplicacio {
 
             switch (opcio) {
                 case 1:
+                    companyies[posicioCompanyies].afegirRutaInternacional();
                     break;
                 case 2:
+                    int pos = companyies[posicioCompanyies].seleccionarRutaInternacional();
+                    companyies[posicioCompanyies].rutesInternacionals[pos].modificarRutaInternacional();
                     break;
                 case 3:
+
                     break;
                 default:
                     System.out.println("Introdueix una opció correcta");

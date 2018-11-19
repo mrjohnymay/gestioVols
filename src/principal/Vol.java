@@ -230,7 +230,7 @@ public class Vol {
 
         LocalTime horaArribada = LocalTime.of(horaA, minutoA);
 
-        return new Vol(codi, ruta, dataSortida, dataArribada, horaSortida, horaArribada);
+        return new Vol(codi, dataSortida, dataArribada, horaSortida, horaArribada);
     }
 
     /*
