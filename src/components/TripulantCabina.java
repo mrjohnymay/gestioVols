@@ -281,5 +281,4 @@ public class TripulantCabina {
                 this.barres = 1;
         }
     }
-
 }
