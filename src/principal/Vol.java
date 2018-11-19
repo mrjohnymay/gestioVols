@@ -55,7 +55,7 @@ public class Vol {
      - Inicialitzar els atributs posicioTripulacioCabina i posicioTcps a 0.
      - Inicialitzar l'atribut durada amb el mètode pertinent d'aquesta classe.
      */
-    public Vol(String codi, int tipusRuta, Date dataSortida, Date dataArribada, LocalTime horaSortida, LocalTime horaArribada) {
+    public Vol(String codi, Date dataSortida, Date dataArribada, LocalTime horaSortida, LocalTime horaArribada) {
         this.codi = codi;
         this.ruta = null;
         this.avio = null;

@@ -9,9 +9,10 @@ package components;
  * @author root
  */
 import java.util.Scanner;
+
 public class Avio {
-    
-    private static Scanner dades = new Scanner (System.in);
+
+    private static Scanner dades = new Scanner(System.in);
 
     private String codi;
     private String fabricant;
@@ -28,8 +29,7 @@ public class Avio {
      - Inicialitzar el vector classes com a buit i una longitud de 4.
      - Inicialitzar l'atribut possicioClasses a 0.
      */
-    
-    public Avio (String codi, String fabricant, String model, int capacitat){
+    public Avio(String codi, String fabricant, String model, int capacitat) {
         this.codi = codi;
         this.fabricant = fabricant;
         this.model = model;
@@ -41,47 +41,46 @@ public class Avio {
     /*
     Mètodes accessors
      */
-    
-    public String getCodi(){
+    public String getCodi() {
         return this.codi;
     }
-    
-    public String getFabricant(){
+
+    public String getFabricant() {
         return this.fabricant;
     }
-    
-    public String getModel(){
+
+    public String getModel() {
         return this.model;
     }
-    
-    public int getCapacitat(){
+
+    public int getCapacitat() {
         return this.capacitat;
     }
-    
-    public Classe[] getClasses(){
+
+    public Classe[] getClasses() {
         return this.classes;
     }
-    
-    public int getPosicioClasses(){
+
+    public int getPosicioClasses() {
         return this.posicioClasses;
     }
-    
-    public void setCodi(String codi){
+
+    public void setCodi(String codi) {
         this.codi = codi;
     }
-    
-    public void setFabricant(String fabricant){
+
+    public void setFabricant(String fabricant) {
         this.fabricant = fabricant;
     }
-    
-    public void setModel(String model){
+
+    public void setModel(String model) {
         this.model = model;
     }
-    
-    public void setCapacitat(int capacitat){
+
+    public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
     }
-    
+
     /*
     Paràmetres: cap
     Accions:
@@ -92,7 +91,7 @@ public class Avio {
     Retorn: El nou avió.
      */
     public static Avio nouAvio() {
-        
+
         System.out.println("Introdueix el codi del avió: ");
         String codi = dades.nextLine();
         System.out.println("Introdueix el fabricant del avió: ");
@@ -101,9 +100,9 @@ public class Avio {
         String model = dades.nextLine();
         System.out.println("Introdueix la capacitat del avió: ");
         int capacitat = dades.nextInt();
-        
-        return new Avio(codi,fabricant,model,capacitat);
-        
+
+        return new Avio(codi, fabricant, model, capacitat);
+
     }
 
     /*
@@ -125,7 +124,7 @@ public class Avio {
         System.out.println("La capacitat de l'avió és: " + capacitat + ". Introdueix la nova capacitat.");
         this.capacitat = dades.nextInt();
         dades.nextLine();
-        
+
         setCodi(codi);
         setFabricant(fabricant);
         setModel(model);
@@ -153,9 +152,16 @@ public class Avio {
      li mostrarem a l'usuari el missatge "\nLa classe no s'ha pogut afegir".
      Retorn: cap
      */
-    
     public void afegirClasse() {
-        
+        System.out.println("Introdueix el nom de la classe per comprovar si ja està afegida: ");
+        String nom = dades.nextLine();
+        if (seleccionarClasse(nom) > -1) {
+            System.out.println("La classe ja està introduïda.");
+        } else {
+            System.out.println("La classe no està registrada.");
+            this.classes[this.posicioClasses] = Classe.novaClasse();
+            this.posicioClasses++;
+        }
     }
 
     public int seleccionarClasse(String nom) {
@@ -169,7 +175,6 @@ public class Avio {
                 trobat = true;
             }
         }
-
         return pos;
     }
 }
