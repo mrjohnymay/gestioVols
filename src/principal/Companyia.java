@@ -515,7 +515,17 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirAvioVol() {
+        int vol = seleccionarVol();
+        int avio = seleccionarAvio();
 
+        if (avio > -1 && vol > -1) {
+            vols[vol].setAvio(avions[avio]);
+            System.out.println("Avió afegit al vol correctament\n");
+        } else if (avio < 0) {
+            System.out.println("\nNo existeix aquest avió");
+        } else {
+            System.out.println("\nNo existeix aquest vol");
+        }
     }
 
     /*
@@ -533,7 +543,17 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirTripulantCabinaVol() {
+        int vol = seleccionarVol();
+        int tripulant = seleccionarTripulantCabina();
 
+        if (tripulant > -1 && vol > -1) {
+            vols[vol].afegirTripulantCabina(tripulantsCabina[tripulant]);
+            System.out.println("Tripulant de Cabina afegit al vol correctament\n");
+        } else if (tripulant < 0) {
+            System.out.println("\nNo existeix aquest tripulant");
+        } else {
+            System.out.println("\nNo existeix aquest vol");
+        }
     }
 
     /*
@@ -549,6 +569,17 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirTCPVol() {
+        int vol = seleccionarVol();
+        int tcp = seleccionarTCP();
+
+        if (tcp > -1 && vol > -1) {
+            vols[vol].afegirTCP(tcps[tcp]);
+            System.out.println("TCP afegit al vol correctament\n");
+        } else if (tcp < 0) {
+            System.out.println("\nNo existeix aquest tcp");
+        } else {
+            System.out.println("\nNo existeix aquest vol");
+        }
 
     }
 
@@ -570,7 +601,33 @@ public class Companyia {
      Retorn: cap
      */
     public void afegirRutaVol(int tipus) {
+        int vol = seleccionarVol();
+        int ruta;
+        switch(tipus){
+            case 1:
+                ruta = seleccionarRutaNacional();
+                break;
+            case 2:
+                ruta = seleccionarRutaInternacional();
+                break;
+            case 3:
+                ruta = seleccionarRutaIntercontinental();
+                break;
+            case 4: 
+                ruta = seleccionarRutaTransoceanica();
+                break;
+            default:
+                ruta = -1;
+        }
 
+        if (ruta > -1 && vol > -1) {
+            vols[vol].setTipusRuta(tipus);
+            System.out.println("Ruta afegida al vol correctament\n");
+        } else if (ruta < 0) {
+            System.out.println("\nNo existeix aquesta ruta");
+        } else {
+            System.out.println("\nNo existeix aquests vol");
+        }
     }
 
 }
