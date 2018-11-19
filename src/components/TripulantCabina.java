@@ -21,9 +21,9 @@ public class TripulantCabina {
     private String nom;
     private int edat;
     private Date dataAlta;//
-    private static LocalTime horesVol;
-    private static String rang;
-    private static int barres;//
+    private  LocalTime horesVol;
+    private  String rang;
+    private  int barres;//
 
     /*
      CONSTRUCTOR
@@ -108,40 +108,40 @@ public class TripulantCabina {
         if (!nouRang.equalsIgnoreCase("C") || !nouRang.equalsIgnoreCase("CP") || !nouRang.equalsIgnoreCase("EV")) {
             System.out.print("\nEl rang introduït no és correcte...\n");
 
-            if ((rang == null) || (rang.equals(""))) { //aixo ho fara nomes quan creem el tripulant
+            if ((this.rang == null) || (this.rang.equals(""))) { //aixo ho fara nomes quan creem el tripulant
                                                         //aixi no modificara res quan cridi al metode modificar
-                rang = " ";
+                this.rang = " ";
             }
         }
 
         //Si volem modificar el tripulant i el rang que hem introduit es enginyer
-        if (rang.equals("Enginyer")) {
+        if (this.rang.equals("Enginyer")) {
             Date now = new Date();
-            long segons = ((now.getTime()) / 1000) - (dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
+            long segons = ((now.getTime()) / 1000) - (this.dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
 
             if (segons >= 157788000) { //i el temps es > a 5 anys
-                rang = "Copilot";
-                assignarBarres(rang);
+                this.rang = "Copilot";
+                assignarBarres(this.rang);
             }
         }
 
-        if (rang.equals("Copilot")) {
+        if (this.rang.equals("Copilot")) {
             Date now = new Date();
-            long segons = ((now.getTime()) / 1000) - (dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
+            long segons = ((now.getTime()) / 1000) - (this.dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
 
             if (segons >= 473364000) {
-                rang = "Comandant";
-                assignarBarres(rang);
+                this.rang = "Comandant";
+                assignarBarres(this.rang);
             }
         }
         
         //Creacio
         if (nouRang.equalsIgnoreCase("C")) {
-            rang = "Comandant";
+            this.rang = "Comandant";
         } else if (nouRang.equalsIgnoreCase("CP")) {
-            rang = "Copilot";
+            this.rang = "Copilot";
         } else {
-            rang = "Enginyer";
+            this.rang = "Enginyer";
         }
     }
 
@@ -223,11 +223,14 @@ public class TripulantCabina {
 
         System.out.print("Introdueix el nou passaport: ");
         nouPassaport = DADES.nextLine();
+        setPassaport(nouPassaport);
         System.out.print("Introdueix el nou nom: ");
         nouNom = DADES.nextLine();
+        setNom(nouNom);
         System.out.print("Introdueix la nova edat:");
         novaEdat = DADES.nextInt();
         DADES.nextLine();
+        setEdat(novaEdat);
         System.out.print("Introdueix les noves hores de vol: ");
         hores = DADES.nextInt();
         DADES.nextLine();
@@ -235,7 +238,7 @@ public class TripulantCabina {
         minuts = DADES.nextInt();
         DADES.nextLine();
         novesHoresVol = LocalTime.of(hores, minuts);
-
+        setHoresVol(novesHoresVol);
         System.out.print("Introdueix el nou rang \n");
         System.out.print("C = Comandant \nCP = Copilot\nEV = Enginyer de vol");
         nouRang = DADES.nextLine();
@@ -262,7 +265,7 @@ public class TripulantCabina {
      en el cas del comandant sempre 4 i en el cas de l'enginyer de vol sempre 1.
      Retorn: número de barres
      */
-    public static void assignarBarres(String pRang) {
+    public void assignarBarres(String pRang) {
         switch (pRang) {
             case "Copilot":
                 if (horesVol.getHour() < 1500) {
