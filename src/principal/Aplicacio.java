@@ -4,25 +4,16 @@
  */
 package principal;
 
-import components.Avio;
-import components.RutaIntercontinental;
-import components.RutaInternacional;
-import components.RutaNacional;
-import components.RutaTransoceanica;
-import components.TCP;
-import components.TripulantCabina;
 import java.text.ParseException;
+import java.util.Scanner;
 
 /**
  *
  * @author root
  */
-import java.util.Scanner;
-
 public class Aplicacio {
 
-    private static Scanner dades = new Scanner(System.in);
-
+    private final static Scanner DADES = new Scanner(System.in);
     private static Companyia[] companyies = new Companyia[5];
     private static int posicioCompanyies = 0; //La propera posició buida del vector companyies
     private static Companyia companyiaActual = null; //Companyia seleccionada
@@ -45,9 +36,9 @@ public class Aplicacio {
             System.out.println("\n6. Gestió de rutes transoceàniques");
             System.out.println("\n7. Gestió de tripulants de cabina");
             System.out.println("\n8. Gestió de tripulants de cabina de passatgers");
-            System.out.println("\n8. Gestió de vols");
+            System.out.println("\n9. Gestió de vols");
 
-            opcio = dades.nextInt();
+            opcio = DADES.nextInt();
 
             switch (opcio) {
                 case 0:
@@ -130,7 +121,7 @@ public class Aplicacio {
             System.out.println("\n3. Modificar");
             System.out.println("\n4. LListar companyes");
 
-            opcio = dades.nextInt();
+            opcio = DADES.nextInt();
 
             switch (opcio) {
                 case 0:
@@ -188,34 +179,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuAvions() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta un avió en aquesta companyia.");
-            System.out.println("\n  2- Modificar un avió d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar avions de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar avions");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirAvio();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarAvio();
-                    companyiaActual.getAvions()[pos].modificarAvio();
+                    if (pos >= 0) {
+                        companyiaActual.getAvions()[pos].modificarAvio();
+                    } else {
+                        System.out.println("\nNo existeix aquest avió");
+                    }
                     break;
                 case 3:
-                    for (Avio avion : companyiaActual.getAvions()) {
-                        avion.mostrarAvio();
+                    for (int i = 0; i < companyiaActual.getPosicioAvions(); i++) {
+                        companyiaActual.getAvions()[i].mostrarAvio();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -240,34 +237,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuRutesNacionals() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta una ruta nacional en aquesta companyia.");
-            System.out.println("\n  2- Modificar una ruta nacional d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar les rutes nacionals de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar rutes nacionals");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirRutaNacional();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarRutaNacional();
-                    companyiaActual.getRutesNacionals()[pos].modificarRutaNacional();
+                    if (pos >= 0) {
+                        companyiaActual.getRutesNacionals()[pos].modificarRutaNacional();
+                    } else {
+                        System.out.println("\nNo existeix aquesta ruta nacional");
+                    }
                     break;
                 case 3:
-                    for (RutaNacional rutesNacionals : companyiaActual.getRutesNacionals()) {
-                        rutesNacionals.mostrarRutaNacional();
+                    for (int i = 0; i < companyiaActual.getPosicioRutesNacionals(); i++) {
+                        companyiaActual.getRutesNacionals()[i].mostrarRutaNacional();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -292,34 +295,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuRutesInternacionals() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta una ruta internacional en aquesta companyia.");
-            System.out.println("\n  2- Modificar una ruta internacional d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar rutes internacionals de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar rutes internacionals");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirRutaInternacional();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarRutaInternacional();
-                    companyiaActual.getRutesInternacionals()[pos].modificarRutaInternacional();
+                    if (pos >= 0) {
+                        companyiaActual.getRutesInternacionals()[pos].modificarRutaInternacional();
+                    } else {
+                        System.out.println("\nNo existeix aquesta ruta internacional");
+                    }
                     break;
                 case 3:
-                    for (RutaInternacional rutesInternacionals : companyiaActual.getRutesInternacionals()) {
-                        rutesInternacionals.mostrarRutaInternacional();
+                    for (int i = 0; i < companyiaActual.getPosicioRutesInternacionals(); i++) {
+                        companyiaActual.getRutesInternacionals()[i].mostrarRutaInternacional();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -344,34 +353,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuRutesIntercontinentals() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta una ruta intercontinental en aquesta companyia.");
-            System.out.println("\n  2- Modificar una ruta intercontinental d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar rutes intercontinentals de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar rutes intercontinentals");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirRutaIntercontinental();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarRutaIntercontinental();
-                    companyiaActual.getRutesIntercontinentals()[pos].modificarRutaIntercontinental();
+                    if (pos >= 0) {
+                        companyiaActual.getRutesIntercontinentals()[pos].modificarRutaIntercontinental();
+                    } else {
+                        System.out.println("\nNo existeix aquesta ruta intercontinental");
+                    }
                     break;
                 case 3:
-                    for (RutaIntercontinental rutesIntercontinental : companyiaActual.getRutesIntercontinentals()) {
-                        rutesIntercontinental.mostrarRutaIntercontinental();
+                    for (int i = 0; i < companyiaActual.getPosicioRutesIntercontinentals(); i++) {
+                        companyiaActual.getRutesIntercontinentals()[i].mostrarRutaIntercontinental();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -396,34 +411,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuRutesTransoceaniques() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta una ruta transoceànica en aquesta companyia.");
-            System.out.println("\n  2- Modificar una ruta transoceànica d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar rutes transoceàniques de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar rutes transoceàniques");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirRutaTransoceanica();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarRutaTransoceanica();
-                    companyiaActual.getRutesTransoceaniques()[pos].modificarRutaTransoceanica();
+                    if (pos >= 0) {
+                        companyiaActual.getRutesTransoceaniques()[pos].modificarRutaTransoceanica();
+                    } else {
+                        System.out.println("\nNo existeix aquesta ruta transoceàniques");
+                    }
                     break;
                 case 3:
-                    for (RutaTransoceanica rutesTransoceaniques : companyiaActual.getRutesTransoceaniques()) {
-                        rutesTransoceaniques.mostrarRutaTransoceanica();
+                    for (int i = 0; i < companyiaActual.getPosicioRutesTransoceaniques(); i++) {
+                        companyiaActual.getRutesTransoceaniques()[i].mostrarRutaTransoceanica();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -448,34 +469,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuTripulantsCabina() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta un tripulant de cabina en aquesta companyia.");
-            System.out.println("\n  2- Modificar un tripulant de cabina d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar tripulants de cabina de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar tripulants de cabina");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirTripulantCabina();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarTripulantCabina();
-                    companyiaActual.getTripulantsCabina()[pos].modificarTripulantCabina();
+                    if (pos >= 0) {
+                        companyiaActual.getTripulantsCabina()[pos].modificarTripulantCabina();
+                    } else {
+                        System.out.println("\nNo existeix aquest tripulant de cabina");
+                    }
                     break;
                 case 3:
-                    for (TripulantCabina tripulantsCabina : companyiaActual.getTripulantsCabina()) {
-                        tripulantsCabina.mostrarTripulantCabina();
+                    for (int i = 0; i < companyiaActual.getPosicioTripulantsCabina(); i++) {
+                        companyiaActual.getTripulantsCabina()[i].mostrarTripulantCabina();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -500,34 +527,40 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuTcps() {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta un TCP en aquesta companyia.");
-            System.out.println("\n  2- Modificar un TCP d'aquesta companyia.");
-            System.out.println("\n  3- Mostrar TCPs de la companyia.");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Llistar tripulants de cabina de passatgers");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirTCP();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarTCP();
-                    companyiaActual.getTcps()[pos].modificarTCP();
+                    if (pos >= 0) {
+                        companyiaActual.getTcps()[pos].modificarTCP();
+                    } else {
+                        System.out.println("\nNo existeix aquest tripulant de cabina de passatgers");
+                    }
                     break;
                 case 3:
-                    for (TCP tcp : companyiaActual.getTcps()) {
-                        tcp.mostrarTCP();
+                    for (int i = 0; i < companyiaActual.getPosicioTcps(); i++) {
+                        companyiaActual.getTcps()[i].mostrarTCP();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
-
         } while (opcio != 0);
     }
 
@@ -562,48 +595,47 @@ public class Aplicacio {
      tècnica de les excepcions que veurem més endavant
      */
     public static void menuVols() throws ParseException {
-        int opcio;
+        int opcio = 0;
 
         do {
-            System.out.println("\n*Benvingut al menú d'avions. Introdueix una acció:");
-            System.out.println("\n  1- Donar d'alta un vol en aquesta companyia.");
-            System.out.println("\n  2- Modificar un vol d'aquesta companyia.");
-            System.out.println("\n  3- Afegir un avió a un vol.");
-            System.out.println("\n  4- Afegir una ruta a un vol.");
-            System.out.println("\n  5- Afegir un tripulant de cabina a un vol.");
-            System.out.println("\n  6- Afegir un TCP a un vol.");
-            System.out.println("\n  7- Mostrar vols de la companyia");
-            System.out.println("\n  0- Sortir del programa");
-            opcio = dades.nextInt();
-            dades.nextLine();
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Modificar");
+            System.out.println("\n3. Afegir avió");
+            System.out.println("\n4. Afegir ruta");
+            System.out.println("\n5. Afegir tripulant de cabina");
+            System.out.println("\n6. Afegir tripulant de cabina de passatgers");
+            System.out.println("\n7. Llistar vols");
+
+            opcio = DADES.nextInt();
 
             switch (opcio) {
+                case 0:
+                    break;
                 case 1:
                     companyiaActual.afegirVol();
                     break;
                 case 2:
                     int pos = companyiaActual.seleccionarVol();
-                    companyiaActual.getVols()[pos].modificarVol();
+                    if (pos >= 0) {
+                        companyiaActual.getVols()[pos].modificarVol();
+                    } else {
+                        System.out.println("\nNo existeix aquest vol");
+                    }
                     break;
                 case 3:
                     companyiaActual.afegirAvioVol();
                     break;
                 case 4:
                     int tipus;
-                    do {
-
-                        System.out.println("Inserta el Tipus de ruta: ");
-                        System.out.println("1 - Ruta Nacional\n"
-                                + "2 - Ruta Internacional\n"
-                                + "3 - Ruta Intercontinental\n"
-                                + "4 - Ruta Transoceánica \n");
-                        tipus = dades.nextInt();
-                        dades.nextLine();
-                        if (tipus > 4 || tipus < 1) {
-                            System.out.println("\nAquest tipus de ruta no existeix\n");
-                        }
-                    } while (tipus > 4 || tipus < 1);
-                    companyiaActual.afegirRutaVol(tipus);
+                    System.out.println("\nQuin tipus de ruta vols afegir? (1:nacional, 2:internacional, 3:intercontinental, 4:transoceànica");
+                    tipus = DADES.nextInt();
+                    if (tipus >= 1 && tipus >= 4) {
+                        companyiaActual.afegirRutaVol(tipus);
+                    } else {
+                        System.out.println("\nEl tipus de ruta no és correcte");
+                    }
                     break;
                 case 5:
                     companyiaActual.afegirTripulantCabinaVol();
@@ -612,21 +644,22 @@ public class Aplicacio {
                     companyiaActual.afegirTCPVol();
                     break;
                 case 7:
-                    for (Vol vol : companyiaActual.getVols()) {
-                        vol.mostrarVol();
+                    for (int i = 0; i < companyiaActual.getPosicioVols(); i++) {
+                        companyiaActual.getVols()[i].mostrarVol();
                     }
                     break;
                 default:
-                    System.out.println("Introdueix una opció correcta");
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
             }
 
-        } while (opcio != 0);
+        } while (opcio!= 0);
     }
 
     public static Integer selectCompanyia() {
 
         System.out.println("\nCodi de la companyia?:");
-        int codi = dades.nextInt();
+        int codi = DADES.nextInt();
 
         boolean trobat = false;
         int pos = -1;

@@ -4,15 +4,15 @@
  */
 package components;
 
+import java.util.Scanner;
+
 /**
  *
  * @author root
  */
-import java.util.Scanner;
-
 public class Avio {
 
-    private static Scanner dades = new Scanner(System.in);
+    private final static Scanner DADES = new Scanner(System.in);
 
     private String codi;
     private String fabricant;
@@ -34,52 +34,61 @@ public class Avio {
         this.fabricant = fabricant;
         this.model = model;
         this.capacitat = capacitat;
-        this.classes = new Classe[4];
-        this.posicioClasses = 0;
+        classes = new Classe[4];
+        posicioClasses = 0;
     }
 
     /*
     Mètodes accessors
      */
     public String getCodi() {
-        return this.codi;
-    }
-
-    public String getFabricant() {
-        return this.fabricant;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public int getCapacitat() {
-        return this.capacitat;
-    }
-
-    public Classe[] getClasses() {
-        return this.classes;
-    }
-
-    public int getPosicioClasses() {
-        return this.posicioClasses;
+        return codi;
     }
 
     public void setCodi(String codi) {
         this.codi = codi;
     }
 
+    public String getFabricant() {
+        return fabricant;
+    }
+
     public void setFabricant(String fabricant) {
         this.fabricant = fabricant;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public void setModel(String model) {
         this.model = model;
     }
 
+    public int getCapacitat() {
+        return capacitat;
+    }
+
     public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
     }
+
+    public Classe[] getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classe[] classes) {
+        this.classes = classes;
+    }
+
+    public int getPosicioClasses() {
+        return posicioClasses;
+    }
+
+    public void setPosicioClasses(int posicioClasses) {
+        this.posicioClasses = posicioClasses;
+    }
+
 
     /*
     Paràmetres: cap
@@ -91,18 +100,20 @@ public class Avio {
     Retorn: El nou avió.
      */
     public static Avio nouAvio() {
+        String codi, fabricant, model;
+        int capacitat;
 
-        System.out.println("Introdueix el codi del avió: ");
-        String codi = dades.nextLine();
-        System.out.println("Introdueix el fabricant del avió: ");
-        String fabricant = dades.nextLine();
-        System.out.println("Introdueix el model del avió: ");
-        String model = dades.nextLine();
-        System.out.println("Introdueix la capacitat del avió: ");
-        int capacitat = dades.nextInt();
+        System.out.println("\nCodi de l'avió:");
+        codi = DADES.next();
+        DADES.nextLine(); //Neteja de buffer
+        System.out.println("\nFabricant de l'avió:");
+        fabricant = DADES.nextLine();
+        System.out.println("\nModel de l'avió:");
+        model = DADES.nextLine();
+        System.out.println("\nCapacitat de l'avió:");
+        capacitat = DADES.nextInt();
 
         return new Avio(codi, fabricant, model, capacitat);
-
     }
 
     /*
@@ -115,20 +126,21 @@ public class Avio {
      Retorn: cap
      */
     public void modificarAvio() {
-        System.out.println("El codi de l'avió és: " + codi + ". Introdueix el nou codi.");
-        this.codi = dades.nextLine();
-        System.out.println("El fabricant de l'avió és: " + fabricant + ". Introdueix el nou fabricant.");
-        this.fabricant = dades.nextLine();
-        System.out.println("El model de l'avió és: " + model + ". Introdueix el nou model.");
-        this.model = dades.nextLine();
-        System.out.println("La capacitat de l'avió és: " + capacitat + ". Introdueix la nova capacitat.");
-        this.capacitat = dades.nextInt();
-        dades.nextLine();
+        
+        System.out.println("\nEl codi de l'avió és: "+codi);
+        System.out.println("\nQuin és el nou Codi de l'avió?");
+        codi = DADES.next();
+        DADES.nextLine(); //Neteja de buffer
+        System.out.println("\nEl fabricant de l'avió és: "+ fabricant);
+        System.out.println("\nQuin és el nou fabricant de l'avió?");
+        fabricant = DADES.nextLine();
+        System.out.println("\nEl model de l'avió és: "+model);
+        System.out.println("\nQuin és el nou model de l'avió?");
+        model = DADES.nextLine();
+        System.out.println("\nLa capacitat de l'avió és: "+capacitat);
+        System.out.println("\nQuina és la nova capacitat de l'avió?");
+        capacitat = DADES.nextInt();
 
-        setCodi(codi);
-        setFabricant(fabricant);
-        setModel(model);
-        setCapacitat(capacitat);
     }
 
     public void mostrarAvio() {
@@ -153,15 +165,27 @@ public class Avio {
      Retorn: cap
      */
     public void afegirClasse() {
-        System.out.println("Introdueix el nom de la classe per comprovar si ja està afegida: ");
-        String nom = dades.nextLine();
-        if (seleccionarClasse(nom) > -1) {
-            System.out.println("La classe ja està introduïda.");
-        } else {
-            System.out.println("La classe no està registrada.");
-            this.classes[this.posicioClasses] = Classe.novaClasse();
-            this.posicioClasses++;
+
+        int capacitatClasses = 0;
+
+        Classe classe = Classe.novaClasse();
+
+        if (seleccionarClasse(classe.getNom()) == -1) { //La classe no existeix
+
+            for (int i = 0; i < posicioClasses; i++) {
+                capacitatClasses += classes[i].getCapacitat();
+            }
+
+            if (capacitatClasses + classe.getCapacitat() <= capacitat) {
+                classes[posicioClasses] = classe;
+            }
+
+            posicioClasses++;
+
+        } else if (seleccionarClasse(classe.getNom()) != -1 || capacitatClasses + classe.getCapacitat() > capacitat) {
+            System.out.println("\nLa classe no s'ha pogut afegir");
         }
+
     }
 
     public int seleccionarClasse(String nom) {
@@ -175,6 +199,8 @@ public class Avio {
                 trobat = true;
             }
         }
+
         return pos;
     }
+
 }

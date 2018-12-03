@@ -5,7 +5,6 @@
 package components;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -20,10 +19,10 @@ public class TripulantCabina {
     private String passaport;
     private String nom;
     private int edat;
-    private Date dataAlta;//
-    private  LocalTime horesVol;
-    private  String rang;
-    private  int barres;//
+    private Date dataAlta;
+    private int horesVol;
+    private String rang;
+    private int barres;
 
     /*
      CONSTRUCTOR
@@ -33,16 +32,13 @@ public class TripulantCabina {
      - Inicialitzar l'atribut dataAlta amb l'hora actual del sistema.
      - Inicialitzar l'atribut barres mitjançant el mètode pertinent d'aquesta classe.
      */
-    public TripulantCabina(String nouPassaport, String nouNom, int novaEdat, LocalTime novesHoresVol, String nouRang) {
-
-        this.passaport = nouPassaport;
-        this.nom = nouNom;
-        this.edat = novaEdat;
-        this.horesVol = novesHoresVol;
-        this.rang = nouRang;
-        this.dataAlta = new Date();
+    public TripulantCabina(String passaport, String nom, int edat, int horesVol, String rang) {
+        this.passaport = passaport;
+        this.nom = nom;
+        this.edat = edat;
+        dataAlta = new Date();
+        this.horesVol = horesVol;
         assignarBarres(rang);
-
     }
 
 
@@ -50,139 +46,99 @@ public class TripulantCabina {
     Mètodes accessors
      */
     public String getPassaport() {
-        return this.passaport;
+        return passaport;
+    }
+
+    public void setPassaport(String passaport) {
+        this.passaport = passaport;
     }
 
     public String getNom() {
-        return this.nom;
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getEdat() {
-        return this.edat;
+        return edat;
     }
 
-    public LocalTime getHoresVol() {
-        return this.horesVol;
-    }
-
-    public String getRang() {
-        return this.rang;
+    public void setEdat(int edat) {
+        this.edat = edat;
     }
 
     public Date getDataAlta() {
-        return this.dataAlta;
+        return dataAlta;
+    }
+
+    public void setDataAlta(Date dataAlta) {
+        this.dataAlta = dataAlta;
+    }
+
+    public int getHoresVol() {
+        return horesVol;
+    }
+
+    public void setHoresVol(int horesVol) {
+        this.horesVol = horesVol;
+    }
+
+    public String getRang() {
+        return rang;
+    }
+
+    public void setRang(String rang) {
+        this.rang = rang;
     }
 
     public int getBarres() {
-        return this.barres;
+        return barres;
     }
 
-    public void setPassaport(String nouPassaport) {
-        this.passaport = nouPassaport;
+    public void setBarres(int barres) {
+        this.barres = barres;
     }
 
-    public void setNom(String nouNom) {
-        this.nom = nouNom;
-    }
-
-    public void setEdat(int novaEdat) {
-        this.edat = novaEdat;
-    }
-
-    public void setHoresVol(LocalTime novesHoresVol) {
-        this.horesVol = novesHoresVol;
-    }
-
-    /*    - Si es vol modificar el rang, a l'hora de demanar-li el nou rang a l'usuari
-     haurem de fer el mateix que en el mètode nouTripulantCabina, però en aquest 
-     cas, si no s'introdueix un rang correcte, en lloc de no assignar-li res a 
-     l'atribut rang, el que farem és no modificar el seu valor actual.*/
- /*un Enginyer de cabina pot passar a ser còpilot si té 5
-     o més anys d'antiguetat, i un copilot pot passar a ser comandant, si té 15 
-     o més anys d'antiguetat.
-     - Si modifiquem el valor del rang, també haurem de modificar el valor de les
-     barres amb el mètode adient d'aquesta classe.
-    
-     NOTA: 5 anys són 157788000 segons.*/
-    public void setRang(String nouRang) {
-        if (!nouRang.equalsIgnoreCase("C") || !nouRang.equalsIgnoreCase("CP") || !nouRang.equalsIgnoreCase("EV")) {
-            System.out.print("\nEl rang introduït no és correcte...\n");
-
-            if ((this.rang == null) || (this.rang.equals(""))) { //aixo ho fara nomes quan creem el tripulant
-                                                        //aixi no modificara res quan cridi al metode modificar
-                this.rang = " ";
-            }
-        }
-
-        //Si volem modificar el tripulant i el rang que hem introduit es enginyer
-        if (this.rang.equals("Enginyer")) {
-            Date now = new Date();
-            long segons = ((now.getTime()) / 1000) - (this.dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
-
-            if (segons >= 157788000) { //i el temps es > a 5 anys
-                this.rang = "Copilot";
-                assignarBarres(this.rang);
-            }
-        }
-
-        if (this.rang.equals("Copilot")) {
-            Date now = new Date();
-            long segons = ((now.getTime()) / 1000) - (this.dataAlta.getTime() / 1000);//calculem els segons de diferencia entre la data d'avui - la data d'alta
-
-            if (segons >= 473364000) {
-                this.rang = "Comandant";
-                assignarBarres(this.rang);
-            }
-        }
-        
-        //Creacio
-        if (nouRang.equalsIgnoreCase("C")) {
-            this.rang = "Comandant";
-        } else if (nouRang.equalsIgnoreCase("CP")) {
-            this.rang = "Copilot";
-        } else {
-            this.rang = "Enginyer";
-        }
-    }
-
-    public void setDataAlta(Date novaDataAlta) {
-        this.dataAlta = novaDataAlta;
-    }
-
-    public void setBarres(int novesBarres) {
-        this.barres = novesBarres;
-    }
-
+    /*
+    Paràmetres: cap
+    Accions:
+    - Demanar a l'usuari les dades per consola per crear un nou tripulant de cabina.
+    Les dades a demanar són les que necessita el constructor.
+    - Heu de tenir en compte que el nom no té per què estar format per una única 
+    paraula, per exemple, Pep Gómez.
+    - També heu de tenir en compte que les hores de vol són de tipus LocalTime, per
+    tant heu de demanar a l'usuari les hores i minuts per crear el LocalTime. En aquest
+    cas es considerarà que els segons i nanosegons, sempre són  0.
+    -  Li demanarà a l'usuari el rang del tripulant de cabina tenint en compte que
+    "C" serà el que ha d'introduir l'usuari si el rang és comandant, "CP" si és
+    copilot i "EV" si és enginyer de vol.
+    - Si no introdueix cap dels tres rangs, no se li assignarà cap valor al rang i se 
+    li mostrarà a l'usuari el missatge "\nEl rang introduït no és correcte".
+    - Si el rang introduït és correcte, se li assignarà a l'atribut rang "Comandant"
+    en cas que el valor introduït sigui "C", "Copilot" en cas que el valor introduït
+    sigui "CP" i "Enginyer de vol" en cas que el valor introduït sigui "EV".
+    Retorn: El nou tripulant de cabina.
+     */
     public static TripulantCabina nouTripulantCabina() {
+        String passaport, nom;
+        int edat, hores;
 
-        String nouPassaport;
-        String nouNom;
-        int novaEdat;
-        LocalTime novesHoresVol;
-        String nouRang;
-        int hores;
-        int minuts;
+        System.out.println("\nPassaport del tripulant:");
+        passaport = DADES.next();
+        DADES.nextLine(); //Neteja de buffer
+        System.out.println("\nNom del tripulant:");
+        nom = DADES.nextLine();
+        System.out.println("\nEdat del tripulant:");
+        edat = DADES.nextInt();
 
-        System.out.print("Introdueix el passaport: ");
-        nouPassaport = DADES.nextLine();
-        System.out.print("Introdueix el nom: ");
-        nouNom = DADES.nextLine();
-        System.out.print("Introdueix la edat:");
-        novaEdat = DADES.nextInt();
-        DADES.nextLine();
-        System.out.print("Introdueix les hores de vol: ");
+        System.out.println("\nHores de vol del tripulant:");
         hores = DADES.nextInt();
-        DADES.nextLine();
-        System.out.print("Introdueix els minuts de vol: ");
-        minuts = DADES.nextInt();
-        DADES.nextLine();
-        novesHoresVol = LocalTime.of(hores, minuts);
 
-        System.out.print("Introdueix el rang \n");
-        System.out.print("C = Comandant \nCP = Copilot\nEV = Enginyer de vol");
-        nouRang = DADES.nextLine();
+        System.out.println("\nQuin rang té el tripulant?: C-Comandant, CP-Copilot, EV-Enginyer de vol");
 
-        return new TripulantCabina(nouPassaport, nouNom, novaEdat, novesHoresVol, nouRang);
+        return new TripulantCabina(passaport, nom, edat, hores, DADES.next());
     }
 
     /*
@@ -210,39 +166,25 @@ public class TripulantCabina {
      Retorn: cap
      */
     public void modificarTripulantCabina() {
-        String nouPassaport;
-        String nouNom;
-        int novaEdat;
-        LocalTime novesHoresVol;
-        String nouRang;
-        int hores;
-        int minuts;
 
-        System.out.println("Dades Actuals del tripulant de cabina: ");
-        mostrarTripulantCabina();
+        System.out.println("\nEl passaport actual del tripulant és:" + passaport);
+        System.out.println("\nQuin és el nou passaport del tripulant?");
+        passaport = DADES.next();
+        DADES.nextLine(); //Neteja de buffer
+        System.out.println("\nEl nom actual del tripulant és:" + nom);
+        System.out.println("\nQuin és el nou nom del tripulant?");
+        nom = DADES.nextLine();
+        System.out.println("\nL'edat actual del tripulant és:" + edat);
+        System.out.println("\nQuina és la nova edat del tripulant?");
+        edat = DADES.nextInt();
 
-        System.out.print("Introdueix el nou passaport: ");
-        nouPassaport = DADES.nextLine();
-        setPassaport(nouPassaport);
-        System.out.print("Introdueix el nou nom: ");
-        nouNom = DADES.nextLine();
-        setNom(nouNom);
-        System.out.print("Introdueix la nova edat:");
-        novaEdat = DADES.nextInt();
-        DADES.nextLine();
-        setEdat(novaEdat);
-        System.out.print("Introdueix les noves hores de vol: ");
-        hores = DADES.nextInt();
-        DADES.nextLine();
-        System.out.print("Introdueix els nous minuts de vol: ");
-        minuts = DADES.nextInt();
-        DADES.nextLine();
-        novesHoresVol = LocalTime.of(hores, minuts);
-        setHoresVol(novesHoresVol);
-        System.out.print("Introdueix el nou rang \n");
-        System.out.print("C = Comandant \nCP = Copilot\nEV = Enginyer de vol");
-        nouRang = DADES.nextLine();
-        setRang(nouRang);
+        System.out.println("Les hores de vol actuals del tripulant són:" + horesVol);
+        System.out.println("\nQuines són les hores de vol actuals del tripulant:");
+        horesVol = DADES.nextInt();
+
+        System.out.println("\nEl rang actual del tripulant és:" + rang);
+        System.out.println("\nQuin és el nou rang del tripulant?: C-Comandant, CP-Copilot, EV-Enginyer de vol");
+        assignarBarres(DADES.next());
 
     }
 
@@ -251,7 +193,7 @@ public class TripulantCabina {
         System.out.println("\nNom: " + nom);
         System.out.println("\nEdat: " + edat);
         System.out.println("\nData d'alta: " + new SimpleDateFormat("dd-MM-yyyy").format(dataAlta));
-        System.out.println("\nHores de vol: " + horesVol.getHour() + ":" + horesVol.getMinute());
+        System.out.println("\nHores de vol: " + horesVol);
         System.out.println("\nRang: " + rang);
         System.out.println("\nBarres: " + barres);
     }
@@ -263,22 +205,32 @@ public class TripulantCabina {
      per paràmetre i les especificacions de l'enunciat de la UF1 del mòdul 5, és a dir, 
      en el cas del copilot, 2 barres si té menys de 1500 hores de vol i 3 si té 1500 o més, 
      en el cas del comandant sempre 4 i en el cas de l'enginyer de vol sempre 1.
-     Retorn: número de barres
+     Retorn: cap
      */
     public void assignarBarres(String pRang) {
+
         switch (pRang) {
-            case "Copilot":
-                if (this.horesVol.getHour() < 1500) {
-                    this.barres = 2;
+            case "C":
+                rang = "Comandant";
+                barres = 4;
+                break;
+            case "CP":
+                rang = "Copilot";
+                if (horesVol < 1500) {
+                    barres = 2;
                 } else {
-                    this.barres = 3;
+                    barres = 3;
                 }
                 break;
-            case "Comandant":
-                this.barres = 4;
+            case "EV":
+                rang = "Enginyer de vol";
+                barres = 1;
                 break;
-            case "Enginyer":
-                this.barres = 1;
+            default:
+                System.out.println("\nEl rang no és correcte");
+                break;
         }
+
     }
+
 }

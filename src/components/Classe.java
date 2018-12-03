@@ -12,40 +12,41 @@ import java.util.Scanner;
  * @author root
  */
 public class Classe {
-
+    
+    private final static Scanner DADES= new Scanner(System.in);
+    
     private String nom;
     private int capacitat;
-
-    /*
+    
+     /*
      CONSTRUCTOR
      Paràmetres: valors per tots els atributs de la classe.
      Accions:
      - Assignar als atributs els valors passats com a paràmetres.
      */
-    public Classe(String nNom, int cCapacitat) {
-        this.nom = nNom;
-        this.capacitat = cCapacitat;
+    public Classe(String nom, int capacitat) {
+        this.nom = nom;
+        this.capacitat = capacitat;
     }
-
-    private static Scanner dades = new Scanner(System.in);
 
     /*
     Mètodes accessors    
-     */
+    */
     public String getNom() {
-        return this.nom;
+        
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getCapacitat() {
-        return this.capacitat;
+        return capacitat;
     }
 
-    public void setNom(String nomParametre) {
-        this.nom = nomParametre;
-    }
-
-    public void setCapacitat(int capacitatParametre) {
-        this.capacitat = capacitatParametre;
+    public void setCapacitat(int capacitat) {
+        this.capacitat = capacitat;
     }
 
     /*
@@ -58,16 +59,15 @@ public class Classe {
     Retorn: La nova classe.
      */
     public static Classe novaClasse() {
-        String nouNom;
-        int novaCapacitat;
-        System.out.print("Inserta el nom de la nova classe: ");
-        nouNom = dades.nextLine();
-        System.out.print("Inserta la capacitat de la nova classe: ");
-        novaCapacitat = dades.nextInt();
-        dades.nextLine();
+        String nom;
+        int capacitat;
 
-        return new Classe(nouNom, novaCapacitat);
+        System.out.println("\nNom de la classe:");
+        nom = DADES.nextLine();
+        System.out.println("\nCapacitat de la classe:");
+        capacitat = DADES.nextInt();
 
+        return new Classe(nom,capacitat);
     }
 
     /*
@@ -80,26 +80,17 @@ public class Classe {
      Retorn: cap
      */
     public void modificarClasse() {
-        System.out.println("Parametres actuals de la Classe:\n"
-                + "- Nom: " + this.nom + "\n- Capacitat: " + this.capacitat);
-        System.out.print("Introdueix el nou nom de la classe: ");
-        this.nom = dades.nextLine();
-        System.out.print("Introdueix la nova capacitat de la classe: ");
-        this.capacitat = dades.nextInt();
 
-        dades.nextLine();
+        System.out.println("\nNom de la classe: " + nom);
+        System.out.println("\nEntra el nou nom:");
+        nom = DADES.nextLine();
+        System.out.println("\nCapacitat de la classe: " + nom);
+        System.out.println("\nEntra la nova capacitat:");
+        capacitat = DADES.nextInt();
     }
 
     public void mostrarClasse() {
-        System.out.println("\nLa classe " + nom + " té una capacitat de " + capacitat);
+        System.out.println("\nLa classe " + nom + " té una capacitat de "+capacitat);
     }
-
-    public static void main(String[] args) {
-        Classe c = new Classe("Prueba",400);
-        c.mostrarClasse();
-        c.modificarClasse();
-        c.mostrarClasse();
-        Classe a = Classe.novaClasse();
-        a.mostrarClasse();
-    }
+    
 }
